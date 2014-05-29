@@ -253,7 +253,7 @@ static void sqlite_regexp(sqlite3_context* context, int argc, sqlite3_value** va
 
 -(void)copyPrepopulatedDatabase:(NSString *)dbfile withDbname:(NSString *)dbname {
   NSLog(@"Prepopulate %@ with %@", dbname, dbfile);
-  NSString *prepopulatedDb = [[NSBundle mainBundle] pathForResource:dbfile ofType:@".db" inDirectory:@"www"];
+  NSString *prepopulatedDb = [[NSBundle mainBundle] pathForResource:dbfile ofType:@".db"];
   NSLog(@"Prepopulate DB is %@", prepopulatedDb);
   NSFileManager *fileManager = [NSFileManager defaultManager];
   if([fileManager fileExistsAtPath:prepopulatedDb]) {
