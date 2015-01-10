@@ -208,7 +208,8 @@ static void sqlite_regexp(sqlite3_context* context, int argc, sqlite3_value** va
             
             //Check if Database Exists and Copy
             if (![[NSFileManager defaultManager] fileExistsAtPath:dbname]) {
-            	[self copyPrepopulatedDatabase:dbfile withDbname:dbname];
+                // dbname comes with full path, so we have to get the file name only
+            	[self copyPrepopulatedDatabase:[[dbname lastPathComponent] stringByDeletingPathExtension] withDbname:dbname];
             }
 
             if (sqlite3_open(name, &db) != SQLITE_OK) {
