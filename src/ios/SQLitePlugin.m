@@ -189,7 +189,9 @@ static void sqlite_regexp(sqlite3_context* context, int argc, sqlite3_value** va
     CDVPluginResult* pluginResult = nil;
     NSMutableDictionary *options = [command.arguments objectAtIndex:0];
 
-    NSString *dbname = [self getDBPath:[options objectForKey:@"name"]];
+    NSString *dbfile = [options objectForKey:@"name"];
+    NSString *dbname = [self getDBPath:dbfile];
+
     NSValue *dbPointer;
 
     if (dbname == NULL) {
